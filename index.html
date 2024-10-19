@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultraviolet Proxy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ultraviolet Proxy</h1>
+    <form onsubmit="return proxyRequest();">
+        <input type="text" id="url" placeholder="Enter URL to visit" required>
+        <input type="submit" value="Visit">
+    </form>
+    <iframe id="proxyFrame"></iframe>
+
+    <script>
+        function proxyRequest() {
+            const url = document.getElementById('url').value;
+            const proxyUrl = `https://your-ultraviolet-app.railway.app/?url=` + encodeURIComponent(url);
+            document.getElementById('proxyFrame').src = proxyUrl;
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
